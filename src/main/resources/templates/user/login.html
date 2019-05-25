@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Rejestracja</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<center>
+    <div style="width: 60%; margin-top: 5%">
+        <h1>Logowanie</h1>
+        <strong>Zaloguj się, aby wejść głębiej</strong>
+
+        <br/><br/>
+
+        <div th:if="${isLogin != null && !isLogin}" class="alert alert-danger" role="alert">
+            Login lub hasło nieprawidłowe!
+        </div>
+
+        <br/>
+
+        <form style="width: 70%" action="/user/login" method="post" th:object="${loginForm}">
+            <div class="form-group">
+                <label for="nickname">Email</label>
+                <input th:field="*{email}" id="nickname" type="text" class="form-control"  placeholder="Wpisz email">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Hasło</label>
+                <input th:field="*{password}" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary">Zaloguj się</button>
+        </form>
+    </div>
+</center>
+</body>
+</html>
