@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Rejestracja</title>
+</head>
+<body>
+    <center>
+        <h1>Rejestracja w MiniStack TM</h1>
+        <strong>Witaj w klubie wyjadaczy IT</strong>
+
+        <form action="/user/register" method="post" th:object="${registerForm}">
+            Nickname: <input type="text" th:field="${nickname}"> <br/>
+            Email: <input type="email" th:field="${email}"> <br/>
+            Hasło: <input type="text" th:field="${password}"> <br/>
+            <input type="submit" value="Wyślij">
+        </form>
+    </center>
+</body>
+</html>
