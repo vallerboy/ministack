@@ -22,15 +22,21 @@
 
             <form style="width: 70%" action="/user/register" method="post" th:object="${registerForm}">
                 <div class="form-group">
+                    <div class="alert alert-danger" th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}"></div>
+
                     <label for="nickname">Nick</label>
                     <input th:field="*{nickname}" id="nickname" type="text" class="form-control"  placeholder="Wpisz nickname">
                 </div>
                 <div class="form-group">
+                    <div class="alert alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+
                     <label for="exampleInputEmail">Email</label>
                     <input th:field="*{email}" type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Wpisz email">
                     <small id="emailHelp" class="form-text text-muted">Nikt nigdy nie zobaczy Twojego adresu</small>
                 </div>
                 <div class="form-group">
+                    <div class="alert alert-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+
                     <label for="exampleInputPassword1">Hasło</label>
                     <input th:field="*{password}" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                 </div>
