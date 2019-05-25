@@ -14,6 +14,12 @@
 
             <br/><br/>
 
+            <div th:if="${isRegistered != null && !isRegistered}" class="alert alert-danger" role="alert">
+                Email zajęty :( Spróbuj jeszcze raz.
+            </div>
+
+            <br/>
+
             <form style="width: 70%" action="/user/register" method="post" th:object="${registerForm}">
                 <div class="form-group">
                     <label for="nickname">Nick</label>

@@ -1,4 +1,4 @@
-package pl.oskarpolak.ministack.model;
+package pl.oskarpolak.ministack.model.form;
 
 import lombok.Data;
 
