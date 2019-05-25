@@ -35,12 +35,12 @@ public class UserService {
     }
 
     public boolean tryLogin(LoginForm loginForm) {
-        Optional<UserEntity> user = userRepository.findByEmail(loginForm.getEmail());
-        if(!user.isPresent()){
+        Optional<UserEntity> userOptional = userRepository.findByEmail(loginForm.getEmail());
+        if(!userOptional.isPresent()){
             return false;
         }
 
-        return getBCrypt().matches(loginForm.getPassword(), user.get().getPassword());
+        return getBCrypt().matches(loginForm.getPassword(), userOptional.get().getPassword());
     }
 
     @Bean
