@@ -14,10 +14,14 @@ import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
+//@Scope(scopeName = "singleton")
 public class UserService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    SessionService sessionService;
 
     @Transactional
     public boolean registerUser(RegisterForm registerForm){
@@ -39,8 +43,13 @@ public class UserService {
         if(!userOptional.isPresent()){
             return false;
         }
-
-        return getBCrypt().matches(loginForm.getPassword(), userOptional.get().getPassword());
+        boolean passwordMatches = getBCrypt().matches(loginForm.getPassword(), userOptional.get().getPassword());
+        if(passwordMatches){
+            sessionService.setLogin(true);
+            sessionService.setNickname(userOptional.get().getNickname());
+            sessionService.setUserId(userOptional.get().getId());
+        }
+        return passwordMatches;
     }
 
     @Bean

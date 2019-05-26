@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.oskarpolak.ministack.model.form.LoginForm;
 import pl.oskarpolak.ministack.model.form.RegisterForm;
+import pl.oskarpolak.ministack.model.service.SessionService;
 import pl.oskarpolak.ministack.model.service.UserService;
 
 import javax.validation.Valid;
@@ -18,6 +19,7 @@ public class AuthController {
 
     @Autowired
     UserService userService;
+
 
     @GetMapping("/user/register")
     public String register(Model model) {

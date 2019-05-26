@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
+<th:block th:replace="user/inc/nav :: nav"></th:block>
+
 <center>
     <div style="width: 60%; margin-top: 5%">
         <h1>Logowanie</h1>
@@ -30,6 +32,8 @@
                 <input th:field="*{password}" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
             </div>
             <button type="submit" class="btn btn-primary">Zaloguj się</button>
+            &nbsp; lub &nbsp;
+            <a href="/user/register" class="btn btn-primary">Zarejestruj się</a>
         </form>
     </div>
 </center>
