@@ -16,6 +16,7 @@
 
         <br/><br/>
 
+        <div th:if="${info != null}" th:text="${info}" class="alert alert-success" role="alert"></div>
         <div th:if="${isLogin != null && !isLogin}" class="alert alert-danger" role="alert">
             Login lub hasło nieprawidłowe!
         </div>

@@ -30,6 +30,6 @@ public class PostService {
     }
 
     public Iterable<PostEntity> getAllPosts(){
-        return postRepository.findAll();
+        return postRepository.findTop10ByOrderByIdDesc();
     }
 }
