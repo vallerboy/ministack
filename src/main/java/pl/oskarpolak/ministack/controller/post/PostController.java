@@ -15,7 +15,6 @@ public class PostController {
     @Autowired
     PostService postService;
 
-
     @GetMapping("/post/add")
     public String addPost(Model model) {
         model.addAttribute("postForm", new PostForm());
