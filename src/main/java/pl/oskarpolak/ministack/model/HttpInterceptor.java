@@ -31,6 +31,7 @@ public class HttpInterceptor implements HandlerInterceptor, WebMvcConfigurer {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+        if(modelAndView != null)
         modelAndView.addObject("userSession", sessionService);
     }
 

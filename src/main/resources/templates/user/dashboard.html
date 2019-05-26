@@ -12,6 +12,8 @@
     <center>
         <div style="width: 60%; margin-top: 100px">
 
+            <div th:if="${info != null}" th:text="${info}" class="alert alert-success" role="alert"></div>
+
             <div class="card">
                 <h5 class="card-header">Featured</h5>
                 <div class="card-body">
