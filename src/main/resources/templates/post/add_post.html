@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <th:block th:replace="user/inc/nav :: nav"></th:block>
+    <center>
+        <div style="width: 60%; margin-top: 5%">
+            <form style="width: 70%" action="/post/add" method="post" th:object="${postForm}">
+                <div class="form-group">
+                    <label for="title">Tytuł</label>
+                    <input th:field="*{title}" id="title" type="text" class="form-control"  placeholder="Wpisz tytuł">
+                </div>
+                <div class="form-group">
+                    <label for="content">Treść</label>
+                    <textarea th:field="*{content}" class="form-control" id="content" placeholder="Treść pytania">
+                    </textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Dodaj post</button>
+            </form>
+        </div>
+    </center>
+</body>
+</html>

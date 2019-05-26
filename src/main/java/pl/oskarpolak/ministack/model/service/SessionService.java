@@ -5,8 +5,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.sql.DataSourceDefinitions;
-        import javax.persistence.NamedAttributeNode;
 
 @Service
 @Scope(scopeName = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
