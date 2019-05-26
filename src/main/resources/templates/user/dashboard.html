@@ -14,31 +14,21 @@
 
             <div th:if="${info != null}" th:text="${info}" class="alert alert-success" role="alert"></div>
 
-            <div class="card">
-                <h5 class="card-header">Featured</h5>
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+            <th:block th:each="post : ${posts}">
+                <div class="card">
+                    <h3 class="card-header" th:text="${post.getTitle()}"></h3>
+                    <div class="card-body">
+                        <h6 class="card-title">Autor: <b th:text="${post.getUser().getNickname()}"></b></h6>
+                        <p class="card-text" style="overflow:hidden;" th:text="${post.getContent()}"></p>
+                        <a href="#" class="btn btn-primary">Skomentuj</a>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Data dodania: <strong th:text="${post.getCreationTime()}"></strong></small>
+                    </div>
                 </div>
-                <div class="card-footer">
-                    <small class="text-muted">Ostatni komentarz: 5 minut temu</small>
-                </div>
-            </div>
 
-            <br/>
-
-            <div class="card">
-                <h5 class="card-header">Featured</h5>
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Ostatni komentarz: 5 minut temu</small>
-                </div>
-            </div>
+                <br/>
+            </th:block>
         </div>
     </center>
 </body>
