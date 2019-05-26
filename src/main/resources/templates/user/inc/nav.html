@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<nav th:fragment="nav" class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+<nav th:fragment="nav" class="navbar fixed-top navbar-expand-lg navbar-light bg-light"
+     xmlns:th="http://www.w3.org/1999/xhtml">
     <a class="navbar-brand" href="#">Ministack</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -14,11 +15,12 @@
                 <a class="nav-link" href="#">Dodaj pytanie</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/user/logout">Wyloguj</a>
+                <a th:if="${userSession.isLogin()}" class="nav-link" href="/user/logout">wyloguj</a>
+                <a th:if="${!userSession.isLogin()}" class="nav-link" href="/user/login">zaloguj</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search">
+            <input class="form-control mr-sm-2" type="search" placeholder="Wpisz frazę">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Szukaj</button>
         </form>
     </div>
