@@ -36,4 +36,8 @@ public class PostService {
     public void deletePost(int id) {
         postRepository.deleteById(id);
     }
+
+    public PostEntity getPost(int id){
+        return postRepository.findById(id).orElseThrow(IllegalArgumentException::new);
+    }
 }

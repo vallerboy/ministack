@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<th:block th:replace="user/inc/nav :: nav"></th:block>
+
+<center>
+    <div style="width: 60%; margin-top: 100px">
+
+            <div class="card">
+                <h3 class="card-header" th:text="${post.getTitle()}"></h3>
+                <div class="card-body">
+                    <h6 class="card-title">Autor: <b th:text="${post.getUser().getNickname()}"></b></h6>
+                    <p class="card-text"  th:text="${post.getContent()}"></p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Data dodania: <strong th:text="${post.getCreationTime()}"></strong></small>
+                </div>
+            </div>
+        <br/>
+
+
+        <div style="max-height: 500px">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text"  th:text="tresc"></p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Data dodania i autor: <strong th:text="${post.getCreationTime()}"></strong></small>
+                </div>
+            </div>
+        </div>
+
+        <br/>
+
+        <div style="width: 100%" class="jumbotron">
+            <form action="/comment/add" method="post">
+                <div class="form-group">
+                    <input class="form-control" type="text" placeholder="Podaj komentarz"></input>
+                </div>
+                <button type="submit" class="btn btn-primary">Dodaj komentarz</button>
+            </form>
+        </div>
+    </div>
+</center>
+</body>
+</html>

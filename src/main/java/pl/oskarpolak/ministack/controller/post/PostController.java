@@ -51,4 +51,10 @@ public class PostController {
         return "redirect:/user/dashboard";
     }
 
+    @GetMapping("/post/details/{id}")
+    public String details(@PathVariable("id") int id,
+                          Model model){
+        model.addAttribute("post", postService.getPost(id));
+        return "post/details_post";
+    }
 }
