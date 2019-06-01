@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.oskarpolak.ministack.model.entity.UserEntity;
+import pl.oskarpolak.ministack.model.form.CommentForm;
 import pl.oskarpolak.ministack.model.form.PostForm;
 import pl.oskarpolak.ministack.model.service.PostService;
 import pl.oskarpolak.ministack.model.service.SessionService;
@@ -55,6 +56,19 @@ public class PostController {
     public String details(@PathVariable("id") int id,
                           Model model){
         model.addAttribute("post", postService.getPost(id));
+        model.addAttribute("comments", postService.getAllCommentsByPost(id));
+        model.addAttribute("commentForm", new CommentForm());
         return "post/details_post";
     }
+
+    @PostMapping("/comment/add/{postId}")
+    public String addComment(@ModelAttribute CommentForm commentForm,
+                             @PathVariable("postId") int postId){
+        if(!sessionService.isLogin()){
+            return "redirect:/user/login";
+        }
+        postService.addComment(commentForm, postId, sessionService.getUserId());
+        return "redirect:/post/details/" + postId;
+    }
+
 }
