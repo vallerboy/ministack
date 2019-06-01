@@ -9,14 +9,22 @@ import javax.persistence.*;
 @Table(name = "user")
 @Data
 public class UserEntity {
+    public enum AccountType {
+        ADMIN,
+        MODERATOR,
+        USER;
+    }
+
     @Id
     @GeneratedValue
     private int id;
     private String email;
     private String nickname;
-
-    //@Column(name = "password_user")
     private String password;
+
+    @Column(name = "account_type")
+    @Enumerated(EnumType.STRING)
+    private AccountType accountType;
 
     public UserEntity() { }
 

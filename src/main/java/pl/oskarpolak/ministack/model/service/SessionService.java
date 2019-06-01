@@ -4,6 +4,7 @@ import lombok.Data;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
+import pl.oskarpolak.ministack.model.entity.UserEntity;
 
 
 @Service
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 @Data
 public class SessionService {
     private int userId;
+    private UserEntity.AccountType accountType;
     private String nickname;
     private boolean isLogin;
 }
