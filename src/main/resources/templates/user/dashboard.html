@@ -21,6 +21,7 @@
                         <h6 class="card-title">Autor: <b th:text="${post.getUser().getNickname()}"></b></h6>
                         <p class="card-text" style="overflow:hidden;" th:text="${post.getContent()}"></p>
                         <a href="#" class="btn btn-primary">Skomentuj</a>
+                        <a th:if="${userSession.getAccountType().name() == 'ADMIN'}" th:href="${'/post/delete/' + post.getId()}" class="btn btn-primary">Usuń</a>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">Data dodania: <strong th:text="${post.getCreationTime()}"></strong></small>
