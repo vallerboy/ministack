@@ -11,6 +11,7 @@ import pl.oskarpolak.ministack.model.repository.CommentRepository;
 import pl.oskarpolak.ministack.model.repository.PostRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PostService {
@@ -62,6 +63,10 @@ public class PostService {
 
     public PostEntity getPost(int id){
         return postRepository.findById(id).orElseThrow(IllegalArgumentException::new);
+    }
+
+    public Optional<PostEntity> getPostOptional(int id){
+        return postRepository.findById(id);
     }
 
     public List<CommentEntity> getAllCommentsByPost(int id){
