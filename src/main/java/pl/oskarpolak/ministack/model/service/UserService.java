@@ -53,6 +53,10 @@ public class UserService {
         return passwordMatches;
     }
 
+    public boolean isUserExits(int id){
+        return userRepository.existsById(id);
+    }
+
     @Bean
     public BCryptPasswordEncoder getBCrypt(){
         return new BCryptPasswordEncoder();

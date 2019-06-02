@@ -2,6 +2,8 @@ package pl.oskarpolak.ministack.model.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.oskarpolak.ministack.model.HttpInterceptor;
+import pl.oskarpolak.ministack.model.dto.PostDto;
 import pl.oskarpolak.ministack.model.entity.CommentEntity;
 import pl.oskarpolak.ministack.model.entity.PostEntity;
 import pl.oskarpolak.ministack.model.entity.UserEntity;
@@ -36,6 +38,10 @@ public class PostService {
         post.setUser(user);
 
         postRepository.save(post);
+    }
+
+    public PostEntity addPost(PostDto postDto){
+       return postRepository.save(PostDto.convertToEntity(postDto));
     }
 
     public Iterable<PostEntity> getAllPosts(){

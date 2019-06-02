@@ -4,12 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import pl.oskarpolak.ministack.model.dto.PostDto;
 import pl.oskarpolak.ministack.model.entity.PostEntity;
 import pl.oskarpolak.ministack.model.service.PostService;
+import pl.oskarpolak.ministack.model.service.UserService;
 
 import java.util.Optional;
 
@@ -19,6 +18,9 @@ public class PostControllerApi {
 
     @Autowired
     PostService postService;
+
+    @Autowired
+    UserService userService;
 
     @GetMapping("/post")
     public ResponseEntity getAllPosts(){
@@ -34,5 +36,17 @@ public class PostControllerApi {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Post with this id not exist");
         }
         return ResponseEntity.ok(post);
+    }
+
+    @PostMapping(value = "/post", consumes = "application/json")
+    public ResponseEntity savePost(@RequestBody PostDto postDto){
+        if(!userService.isUserExits(postDto.getUserId())){
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body("User with this id not exist");
+        }
+        return ResponseEntity.ok(
+                postService.addPost(postDto)
+        );
     }
 }
