@@ -22,6 +22,8 @@ public class PostControllerApi {
     @Autowired
     UserService userService;
 
+    private final String API_KEY = "zsjd89eyr7y32idkok132j80jofdasmkpad78gq379jr-k2opemduehq9f239";
+
     @GetMapping("/post")
     public ResponseEntity getAllPosts(){
         return ResponseEntity.ok(
@@ -39,7 +41,12 @@ public class PostControllerApi {
     }
 
     @PostMapping(value = "/post", consumes = "application/json")
-    public ResponseEntity savePost(@RequestBody PostDto postDto){
+    public ResponseEntity savePost(@RequestBody PostDto postDto,
+                                   @RequestHeader("api-key") String key){
+        if(!key.equals(API_KEY)){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
         if(!userService.isUserExits(postDto.getUserId())){
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)

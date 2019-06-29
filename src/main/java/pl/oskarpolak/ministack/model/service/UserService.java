@@ -54,7 +54,7 @@ public class UserService {
     }
 
     public boolean isUserExits(int id){
-        return userRepository.existsById(id);
+        return userRepository.isUserExistById(id);
     }
 
     @Bean
